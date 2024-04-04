@@ -5,92 +5,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sum Calculator</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Moved CSS styles to an external stylesheet */
+        .calculator {
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 150px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .calculator {
+            text-align: center;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: calc(100% - 22px);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+    </style>
 </head>
 <body>
-    <div class="calculator">
-        <input type="text" id="Loan_Amount" placeholder="Loan Amount">
-        <input type="text" id="pf" placeholder="PF">
-        <input type="text" id="Additional_Charges" placeholder="Additional Charges">
-        <input type="text" id="Vehical_cost" placeholder="Vehicle Cost">
-
-
-
-
-
-        <button onclick="calculateSum()">Calculate</button>
-        <button onclick="resetFields()">Reset</button>
-        <p id="result"></p>
+    <div class="container">
+        <div class="calculator">
+            <h2>Bajaj Loan Calculator</h2>
+            <label for="Loan_Amount">Loan Amount:</label>
+            <input type="text" id="Loan_Amount" placeholder="Enter Loan Amount">
+            <label for="Processing_fees">Processing Fees:</label>
+            <input type="text" id="Processing_fees" placeholder="Enter Processing Fees">
+            <label for="Additional_Charges">Additional Charges:</label>
+            <input type="text" id="Additional_Charges" placeholder="Enter Additional Charges">
+            <label for="Vehical_cost">Vehicle Cost:</label>
+            <input type="text" id="Vehical_cost" placeholder="Enter Vehicle Cost">
+            <label for="Rate_Of_Interest">Rate of Interest:</label>
+            <input type="text" id="Rate_Of_Interest" placeholder="Enter Rate of Interest">
+            <label for="Tenure">Loan Tenure (in years):</label>
+            <input type="text" id="Tenure" placeholder="Year">
+            <button onclick="calculateSum()">Calculate</button>
+            <button onclick="resetFields()">Reset</button>
+            <!-- Result Display -->
+            <div class="result-container">
+                <p id="result"></p>
+                <p id="result1"></p>
+            </div>
+        </div>
+        MADE BY NARAYAN THAKARE ....
     </div>
 
     <script src="script.js"></script>
+    <script>
+        function calculateSum() {
+            var Loan_Amount = parseFloat(document.getElementById('Loan_Amount').value);
+            var Processing_fees = parseFloat(document.getElementById('Processing_fees').value);
+            var Additional_Charges = parseFloat(document.getElementById('Additional_Charges').value);
+            var Vehical_cost = parseFloat(document.getElementById('Vehical_cost').value);
+            var Rate_Of_Interest = parseFloat(document.getElementById('Rate_Of_Interest').value);
+            var Tenure = parseFloat(document.getElementById('Tenure').value);
+
+            if (isNaN(Loan_Amount) || isNaN(Processing_fees) || isNaN(Additional_Charges) || isNaN(Vehical_cost) || isNaN(Rate_Of_Interest) || isNaN(Tenure)) {
+                document.getElementById('result').innerText = 'Please enter valid numbers';
+                return;
+            }
+
+            var Down_payment = Loan_Amount * Processing_fees / 100 + Additional_Charges + Vehical_cost - Loan_Amount;
+
+            var step1 = Loan_Amount * Rate_Of_Interest / 100;
+            var step2 = step1 * Tenure;
+            var step3 = step2 + Loan_Amount;
+            var EMI = step3 / (Tenure*12);
+            // var EMI = step4 / (Tenure * 12); // Calculating EMI
+
+            document.getElementById('result').innerText = 'Down Payment: ' + Down_payment.toFixed(2);
+            document.getElementById('result1').innerText = 'EMI: ' + EMI.toFixed(2);
+        }
+
+        function resetFields() {
+            document.getElementById('Loan_Amount').value = '';
+            document.getElementById('Processing_fees').value = '';
+            document.getElementById('Additional_Charges').value = '';
+            document.getElementById('Vehical_cost').value = '';
+            document.getElementById('Rate_Of_Interest').value = '';
+            document.getElementById('Tenure').value = '';
+            document.getElementById('result').innerText = '';
+            document.getElementById('result1').innerText = ''; // Clearing EMI result
+        }
+    </script>
 </body>
-
-<style>
-.calculator {
-    margin: 50px auto;
-    text-align: center;
-}
-
-input[type="text"] {
-    padding: 10px;
-    width: 150px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
-    padding: 10px 20px;
-    margin: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-p {
-    margin-top: 20px;
-    font-size: 18px;
-}
-</style>
-
-<script>
-function calculateSum() {
-    var Loan_Amount = parseFloat(document.getElementById('Loan_Amount').value);
-    var pf = parseFloat(document.getElementById('pf').value);
-    var Additional_Charges = parseFloat(document.getElementById('Additional_Charges').value);
-    var Vehical_cost = parseFloat(document.getElementById('Vehical_cost').value);
-
-    if (isNaN(Loan_Amount) || isNaN(pf) || isNaN(Additional_Charges) || isNaN(Vehical_cost)) {
-        document.getElementById('result').innerText = 'Please enter valid numbers';
-        return;
-    }
-
-    var sum = Loan_Amount * pf / 100 + Additional_Charges + Vehical_cost - Loan_Amount;
-
-    document.getElementById('result').innerText = 'Down Payment: ' + sum;
-}
-
-function resetFields() {
-    document.getElementById('Loan_Amount').value = '';
-    document.getElementById('pf').value = '';
-    document.getElementById('Additional_Charges').value = '';
-    document.getElementById('Vehical_cost').value = '';
-    document.getElementById('result').innerText = '';
-}
-</script>
-
-<!-- ///////////////////////////////////////////////////////////////////////////////////////////////// -->
-
-
-
-
-
-
-
-
 </html>
