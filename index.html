@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="Loan_Amount" placeholder="Loan Amount">
+        <input type="text" id="pf" placeholder="PF">
+        <input type="text" id="Additional_Charges" placeholder="Additional Charges">
+        <input type="text" id="Vehical_cost" placeholder="Vehicle Cost">
+
+
+
+
+
+        <button onclick="calculateSum()">Calculate</button>
+        <button onclick="resetFields()">Reset</button>
+        <p id="result"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+<style>
+.calculator {
+    margin: 50px auto;
+    text-align: center;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 150px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    margin-top: 20px;
+    font-size: 18px;
+}
+</style>
+
+<script>
+function calculateSum() {
+    var Loan_Amount = parseFloat(document.getElementById('Loan_Amount').value);
+    var pf = parseFloat(document.getElementById('pf').value);
+    var Additional_Charges = parseFloat(document.getElementById('Additional_Charges').value);
+    var Vehical_cost = parseFloat(document.getElementById('Vehical_cost').value);
+
+    if (isNaN(Loan_Amount) || isNaN(pf) || isNaN(Additional_Charges) || isNaN(Vehical_cost)) {
+        document.getElementById('result').innerText = 'Please enter valid numbers';
+        return;
+    }
+
+    var sum = Loan_Amount * pf / 100 + Additional_Charges + Vehical_cost - Loan_Amount;
+
+    document.getElementById('result').innerText = 'Down Payment: ' + sum;
+}
+
+function resetFields() {
+    document.getElementById('Loan_Amount').value = '';
+    document.getElementById('pf').value = '';
+    document.getElementById('Additional_Charges').value = '';
+    document.getElementById('Vehical_cost').value = '';
+    document.getElementById('result').innerText = '';
+}
+</script>
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+
+
+
+
+
+</html>
