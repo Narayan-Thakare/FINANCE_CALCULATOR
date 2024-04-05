@@ -91,27 +91,70 @@
     </style>
 </head>
 <body>
+
+
     <div class="container">
+
+        
         <div class="calculator">
             <h2>Bajaj Loan Calculator</h2>
-            <label for="Loan_Amount">Loan Amount:</label>
-            <input type="text" id="Loan_Amount" placeholder="Enter Loan Amount">
-            <label for="Processing_fees">Processing Fees:</label>
-            <input type="text" id="Processing_fees" placeholder="Enter Processing Fees">
-            <label for="Additional_Charges">Additional Charges:</label>
-            <input type="text" id="Additional_Charges" placeholder="Enter Additional Charges">
+
+
             <label for="Vehical_cost">Vehicle Cost:</label>
             <input type="text" id="Vehical_cost" placeholder="Enter Vehicle Cost">
-            <label for="Rate_Of_Interest">Rate of Interest:</label>
-            <input type="text" id="Rate_Of_Interest" placeholder="Enter Rate of Interest">
-            <label for="Tenure">Loan Tenure (in years):</label>
-            <input type="text" id="Tenure" placeholder="Year">
-            <button onclick="calculateSum()">Calculate</button>
-            <button onclick="resetFields()">Reset</button>
+
+            <label for="Percent">Percent</label>
+            <input type="text" id="percentage" placeholder="Percent">
+
+
+           
+            
+            <button onclick="vehical_percent()">Perccent</button>
+            <!-- <button onclick="resetpercent()">Reset</button> -->
             <!-- Result Display -->
             <div class="result-container">
                 <p id="result"></p>
                 <p id="result1"></p>
+                <p id="result2"></p>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+
+
+        <div class="calculator">
+            <h2>Bajaj Loan Calculator</h2>
+
+
+           
+            <label for="Loan_Amount">Loan Amount:</label>
+            <input type="text" id="Loan_Amount" placeholder="Enter Loan Amount">
+
+
+            <label for="Processing_fees">Processing Fees:</label>
+            <input type="text" id="Processing_fees" placeholder="Enter Processing Fees">
+            <label for="Additional_Charges">Additional Charges:</label>
+            <input type="text" id="Additional_Charges" placeholder="Enter Additional Charges">
+          
+            <label for="Rate_Of_Interest">Rate of Interest:</label>
+            <input type="text" id="Rate_Of_Interest" placeholder="Enter Rate of Interest">
+            <label for="Tenure">Loan Tenure (in years):</label>
+            <input type="text" id="Tenure" placeholder="Year">
+
+            
+            <button onclick="calculateSum()">Calculate</button>
+            <button onclick="resetFields()">Reset All</button>
+            <button onclick="reset()">Reset</button>
+
+            <!-- Result Display -->
+            <div class="result-container">
+                <p id="result"></p>
+                <p id="result1"></p>
+                
             </div>
         </div>
         MADE BY NARAYAN THAKARE ....
@@ -144,6 +187,29 @@
             document.getElementById('result1').innerText = 'EMI: ' + EMI.toFixed(2);
         }
 
+
+
+        function vehical_percent() {
+            var Vehical_cost = parseFloat(document.getElementById('Vehical_cost').value);
+            var percentage = parseFloat(document.getElementById('percentage').value);
+            
+
+            if (isNaN(Vehical_cost) || isNaN(percentage)) {
+                document.getElementById('result2').innerText = 'Please enter valid numbers';
+                return;
+            }
+
+            var Vehical_percentage = Vehical_cost*percentage/100;
+
+           
+            // var EMI = step4 / (Tenure * 12); // Calculating EMI
+
+            document.getElementById('result2').innerText = 'Vehical_percentage: ' + Vehical_percentage.toFixed(2);
+          //  document.getElementById('result1').innerText = 'EMI: ' + EMI.toFixed(2);
+        }
+
+
+
         function resetFields() {
             document.getElementById('Loan_Amount').value = '';
             document.getElementById('Processing_fees').value = '';
@@ -151,9 +217,27 @@
             document.getElementById('Vehical_cost').value = '';
             document.getElementById('Rate_Of_Interest').value = '';
             document.getElementById('Tenure').value = '';
+            document.getElementById('percentage').value = '';
+
             document.getElementById('result').innerText = '';
             document.getElementById('result1').innerText = ''; // Clearing EMI result
+            document.getElementById('result2').innerText = ''; // Clearing EMI result
+
         }
+
+
+        function reset() {
+            document.getElementById('Loan_Amount').value = '';
+          
+            document.getElementById('Vehical_cost').value = '';
+          
+
+
+        }
+
     </script>
+
+
+
 </body>
 </html>
