@@ -101,7 +101,7 @@
 
 
             <label for="Vehical_cost">Vehicle Cost:</label>
-            <input type="text" id="Vehical_cost" placeholder="Enter Vehicle Cost">
+            <input type="text" id="Vehical_cost" placeholder="Enter Vehicle Cost"inputmode="numeric">
 
             <label for="Percent">Percent</label>
             <input type="text" id="percentage" placeholder="Percent">
@@ -113,9 +113,11 @@
             <!-- <button onclick="resetpercent()">Reset</button> -->
             <!-- Result Display -->
             <div class="result-container">
-                <p id="result"></p>
-                <p id="result1"></p>
+                <!-- <p id="result"></p>
+                <p id="result1"></p> -->
                 <p id="result2"></p>
+                <p id="result3"></p>
+
 
             </div>
         </div>
@@ -201,10 +203,18 @@
 
             var Vehical_percentage = Vehical_cost*percentage/100;
 
+            var Remaining_Percentage_down_payment = Vehical_cost - (Vehical_cost * percentage / 100);
+
+
+
            
             // var EMI = step4 / (Tenure * 12); // Calculating EMI
 
-            document.getElementById('result2').innerText = 'Vehical_percentage: ' + Vehical_percentage.toFixed(2);
+            document.getElementById('result2').innerText = 'Vehical Percentage: ' + Vehical_percentage.toFixed(2);
+            document.getElementById('result3').innerText = 'Remaining Percentage down payment: ' + Remaining_Percentage_down_payment.toFixed(3);
+
+
+
           //  document.getElementById('result1').innerText = 'EMI: ' + EMI.toFixed(2);
         }
 
