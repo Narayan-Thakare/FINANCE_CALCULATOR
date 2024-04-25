@@ -3,220 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sum Calculator</title>
+    <title>Bajaj Loan Calculator</title>
     <link rel="stylesheet" href="styles.css">
+
+
     <style>
-        /* Moved CSS styles to an external stylesheet */
-        .calculator {
-            margin: 50px auto;
-            text-align: center;
-        }
-
-        input[type="text"] {
-            padding: 10px;
-            width: 150px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        button {
-            padding: 10px 20px;
-            margin: 10px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        p {
-            margin-top: 20px;
-            font-size: 18px;
-        }
 
 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+.calculator {
+    text-align: center;
+}
 
-        .calculator {
-            text-align: center;
-        }
+input[type="text"] {
+    padding: 10px;
+    width: calc(100% - 22px);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
 
-        input[type="text"] {
-            padding: 10px;
-            width: calc(100% - 22px);
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-        button {
-            padding: 10px 20px;
-            margin: 10px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+button:hover {
+    background-color: #0056b3;
+}
 
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        p {
-            margin-top: 20px;
-            font-size: 18px;
-        }
+p {
+    margin-top: 20px;
+    font-size: 18px;
+}
 
     </style>
 </head>
 <body>
-
-
     <div class="container">
-
-        
         <div class="calculator">
             <h2>Bajaj Loan Calculator</h2>
-
-
             <label for="Vehical_cost">Vehicle Cost:</label>
-            <input type="text" id="Vehical_cost" placeholder="Enter Vehicle Cost" inputmode="numeric">
-
-            <label for="Percent">Percent</label>
-            <input type="text" id="percentage" placeholder="Percent" inputmode="numeric" >
-
-
-           
+            <input type="text" id="Vehical_cost" placeholder="Enter Vehicle Cost" inputmode="numeric" oninput="formatIndianNumber(this)">
             
-            <button onclick="vehical_percent()">Perccent</button>
-            <!-- <button onclick="resetpercent()">Reset</button> -->
-            <!-- Result Display -->
+            
+            <label for="Percent">Percent</label>
+            <input type="text" id="percentage" placeholder="Percent" inputmode="numeric">
+            <button onclick="vehical_percent()">Calculate Percent</button>
             <div class="result-container">
-                <!-- <p id="result"></p>
-                <p id="result1"></p> -->
                 <p id="result2"></p>
                 <p id="result3"></p>
-
-
             </div>
         </div>
-    </div>
-
-
-
-    <div class="container">
-
-
         <div class="calculator">
-            <h2>Bajaj Loan Calculator</h2>
-
-
-           
             <label for="Loan_Amount">Loan Amount:</label>
-            <input type="text" id="Loan_Amount" placeholder="Enter Loan Amount" inputmode="numeric" >
-
-
+            <input type="text" id="Loan_Amount" placeholder="Enter Loan Amount" inputmode="numeric" oninput="formatIndianNumber(this)">
+            
             <label for="Processing_fees">Processing Fees:</label>
-            <input type="text" id="Processing_fees" placeholder="Enter Processing Fees"inputmode="numeric" >
+            <input type="text" id="Processing_fees" placeholder="Enter Processing Fees" inputmode="numeric">
+
+
+
             <label for="Additional_Charges">Additional Charges:</label>
-            <input type="text" id="Additional_Charges" placeholder="Enter Additional Charges"inputmode="numeric" >
-          
+            <input type="text" id="Additional_Charges" placeholder="Enter Additional Charges" inputmode="numeric" oninput="formatIndianNumber(this)">
             <label for="Rate_Of_Interest">Rate of Interest:</label>
             <input type="text" id="Rate_Of_Interest" placeholder="Enter Rate of Interest" inputmode="numeric">
             <label for="Tenure">Loan Tenure (in years):</label>
-            <input type="text" id="Tenure" placeholder="Year" inputmode="numeric" >
-
-            
+            <input type="text" id="Tenure" placeholder="Year" inputmode="numeric">
             <button onclick="calculateSum()">Calculate</button>
             <button onclick="resetFields()">Reset All</button>
-            <button onclick="reset()">Reset</button>
+            <button onclick="reset()">Reset </button>
 
-            <!-- Result Display -->
             <div class="result-container">
                 <p id="result"></p>
                 <p id="result1"></p>
-                
+                <p id="result22"></p>
+
             </div>
         </div>
-        MADE BY NARAYAN THAKARE ....
+MADE BY :- NARAYAN THAKARE
     </div>
 
-    <script src="script.js"></script>
+
     <script>
         function calculateSum() {
-            var Loan_Amount = parseFloat(document.getElementById('Loan_Amount').value);
-            var Processing_fees = parseFloat(document.getElementById('Processing_fees').value);
-            var Additional_Charges = parseFloat(document.getElementById('Additional_Charges').value);
-            var Vehical_cost = parseFloat(document.getElementById('Vehical_cost').value);
-            var Rate_Of_Interest = parseFloat(document.getElementById('Rate_Of_Interest').value);
-            var Tenure = parseFloat(document.getElementById('Tenure').value);
+    // Parse input values with Indian numbering formatting
+    var Loan_Amount = parseFloat(document.getElementById('Loan_Amount').value.replace(/,/g, ''));
+    var Processing_fees = parseFloat(document.getElementById('Processing_fees').value.replace(/,/g, ''));
+    var Additional_Charges = parseFloat(document.getElementById('Additional_Charges').value.replace(/,/g, ''));
+    var Vehical_cost = parseFloat(document.getElementById('Vehical_cost').value.replace(/,/g, ''));
+    var Rate_Of_Interest = parseFloat(document.getElementById('Rate_Of_Interest').value.replace(/,/g, ''));
+    var Tenure = parseFloat(document.getElementById('Tenure').value);
 
-            if (isNaN(Loan_Amount) || isNaN(Processing_fees) || isNaN(Additional_Charges) || isNaN(Vehical_cost) || isNaN(Rate_Of_Interest) || isNaN(Tenure)) {
-                document.getElementById('result').innerText = 'Please enter valid numbers';
-                return;
-            }
+    // Check if any input value is NaN
+    if (isNaN(Loan_Amount) || isNaN(Processing_fees) || isNaN(Additional_Charges) || isNaN(Vehical_cost) || isNaN(Rate_Of_Interest) || isNaN(Tenure)) {
+        document.getElementById('result').innerText = 'Please enter valid numbers';
+        return;
+    }
 
-            var Down_payment = Loan_Amount * Processing_fees / 100 + Additional_Charges + Vehical_cost - Loan_Amount;
+    // Calculate Down Payment
+    var Down_payment = Loan_Amount * Processing_fees / 100 + Additional_Charges + Vehical_cost - Loan_Amount;
 
-            var step1 = Loan_Amount * Rate_Of_Interest / 100;
-            var step2 = step1 * Tenure;
-            var step3 = step2 + Loan_Amount;
-            var EMI = step3 / (Tenure*12);
-            // var EMI = step4 / (Tenure * 12); // Calculating EMI
+    // Calculate EMI
+    var step1 = Loan_Amount * Rate_Of_Interest / 100;
+    var step2 = step1 * Tenure;
+    var step3 = step2 + Loan_Amount;
+    var EMI = step3 / (Tenure * 12);
 
-            document.getElementById('result').innerText = 'Down Payment: ' + Down_payment.toFixed(2);
-            document.getElementById('result1').innerText = 'EMI: ' + EMI.toFixed(2);
-        }
+    var upAmount = (EMI * (Tenure * 12)) + Down_payment-Vehical_cost;
+
+
+   // var remainingamount = upamount-Vehical_cost ;
+
+
+    // Format Down Payment and EMI in Indian numbering system
+    var formattedDownPayment = Down_payment.toLocaleString('en-IN');
+    var formattedEMI = EMI.toLocaleString('en-IN');
+
+    var formattedupAmount = upAmount.toLocaleString('en-IN');
+
+
+
+
+
+    document.getElementById('result').innerText = 'Down Payment: ' + formattedDownPayment;
+    document.getElementById('result1').innerText = 'EMI:' + formattedEMI    ;
+
+    document.getElementById('result22').innerText = 'Extended Amount :' + formattedupAmount      ;
+
+
+
+
+
+}
+
 
 
 
         function vehical_percent() {
-            var Vehical_cost = parseFloat(document.getElementById('Vehical_cost').value);
-            var percentage = parseFloat(document.getElementById('percentage').value);
-            
+    var Vehical_cost = parseFloat(document.getElementById('Vehical_cost').value.replace(/,/g, ''));
+    var percentage = parseFloat(document.getElementById('percentage').value);
 
-            if (isNaN(Vehical_cost) || isNaN(percentage)) {
-                document.getElementById('result2').innerText = 'Please enter valid numbers';
-                return;
-            }
+    if (isNaN(Vehical_cost) || isNaN(percentage)) {
+        document.getElementById('result2').innerText = 'Please enter valid numbers';
+        return;
+    }
 
-            var Vehical_percentage = Vehical_cost*percentage/100;
+    // Calculate the percentage value based on the numeric value without formatting
+    var Vehical_percentage = (Vehical_cost * percentage) / 100;
 
-            var Remaining_Percentage_down_payment = Vehical_cost - (Vehical_cost * percentage / 100);
+    // Format the percentage value in Indian numbering system
+    var formattedPercentage = Vehical_percentage.toLocaleString('en-IN');
 
+    document.getElementById('result2').innerText = 'Loan Amount : ' + formattedPercentage;
+    document.getElementById('result3').innerText = 'Remaining Percentage down payment: ' + (Vehical_cost - Vehical_percentage).toLocaleString('en-IN');
+}
 
-
-           
-            // var EMI = step4 / (Tenure * 12); // Calculating EMI
-
-            document.getElementById('result2').innerText = 'Vehical Percentage: ' + Vehical_percentage.toFixed(2);
-            document.getElementById('result3').innerText = 'Remaining Percentage down payment: ' + Remaining_Percentage_down_payment.toFixed(3);
-
-
-
-          //  document.getElementById('result1').innerText = 'EMI: ' + EMI.toFixed(2);
-        }
 
 
 
@@ -232,6 +195,7 @@
             document.getElementById('result').innerText = '';
             document.getElementById('result1').innerText = ''; // Clearing EMI result
             document.getElementById('result2').innerText = ''; // Clearing EMI result
+            document.getElementById('result22').innerText = ''; // Clearing EMI result
 
         }
 
@@ -244,6 +208,8 @@
             document.getElementById('result').innerText = '';
             document.getElementById('result1').innerText = ''; // Clearing EMI result
             document.getElementById('result2').innerText = ''; // Clearing EMI result
+            document.getElementById('result3').innerText = ''; // Clearing EMI result
+            document.getElementById('result22').innerText = ''; // Clearing EMI result
 
 
         }
@@ -252,5 +218,23 @@
 
 
 
+<script>
+function formatIndianNumber(input) {
+    // Remove commas from the input value and parse as float
+    var value = parseFloat(input.value.replace(/,/g, ''));
+
+    // Check if the parsed value is a valid number
+    if (!isNaN(value)) {
+        // Format the number in Indian numbering system
+        var formattedValue = value.toLocaleString('en-IN');
+        // Set the formatted value back to the input field
+        input.value = formattedValue;
+    }
+}
+
+
+
+</script>
+    <script src="script.js"></script>
 </body>
 </html>
