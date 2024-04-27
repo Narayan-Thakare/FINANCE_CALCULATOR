@@ -61,8 +61,16 @@ p {
     </style>
 </head>
 <body>
+
     <div class="container">
         <div class="calculator">
+
+
+            <a href="p1hsemsmbl1amu18dk1odomu41tl84-3.jpg">Scheem Code</a>
+
+
+
+
             <h2>Bajaj Loan Calculator</h2>
             <label for="Vehical_cost">Vehicle Cost:</label>
             <input type="text" id="Vehical_cost" placeholder="Enter Vehicle Cost" inputmode="numeric" oninput="formatIndianNumber(this)">
@@ -146,11 +154,10 @@ MADE BY :- NARAYAN THAKARE
 
 
 
+    document.getElementById('result').innerText = 'Down Payment:   ' + formattedDownPayment +' ₹';
+    document.getElementById('result1').innerText = 'EMI: ' + formattedEMI  +' ₹'   ; 
 
-    document.getElementById('result').innerText = 'Down Payment: ' + formattedDownPayment;
-    document.getElementById('result1').innerText = 'EMI:' + formattedEMI    ;
-
-    document.getElementById('result22').innerText = 'Extended Amount :' + formattedupAmount      ;
+    document.getElementById('result22').innerText = 'Extended Amount: ' + formattedupAmount  +' ₹'    ;
 
 
 
@@ -231,6 +238,7 @@ function formatIndianNumber(input) {
         input.value = formattedValue;
     }
 }
+
 
 
 
