@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .calculator {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px 5px;
+            width: calc(50% - 10px);
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Bajaj Loan Calculator</h2>
+
+
+        <label for="Down_payment">Down Payment:</label>
+        <input type="text" id="Down_payment" placeholder="Enter Down Payment" inputmode="numeric" oninput="formatIndianNumber(this)" >
+
+        <label for="Vehical_cost">Vehicle Cost:</label>
+        <input type="text" id="Vehical_cost" placeholder="Enter Vehicle Cost" inputmode="numeric" oninput="formatIndianNumber(this)" >
+
+      
+        <label for="Processing_fees">Processing Fees:</label>
+        <input type="text" id="Processing_fees" placeholder="Enter Processing Fees" inputmode="numeric" oninput="formatIndianNumber(this)">
+
+        <label for="Additional_Charges">Additional Charges:</label>
+        <input type="text" id="Additional_Charges" placeholder="Enter Additional Charges" inputmode="numeric" oninput="formatIndianNumber(this)">
+
+     
+
+        
+
+        <button onclick="calculateSum()">Calculate</button>
+        <button onclick="resetFields()"> All Reset</button>
+        <button onclick="resetFields2()"> Reset</button>
+
+        <p id="result"></p>
+        <p id="result1"></p>
+        <p id="result2"></p>
+
+
+        MADE BY NARAYAN THAKARE ....
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function calculateSum() {
+
+
+
+            var Down_payment = parseFloat(document.getElementById('Down_payment').value.replace(/,/g, ''));
+    var Processing_fees = parseFloat(document.getElementById('Processing_fees').value.replace(/,/g, ''));
+    var Additional_Charges = parseFloat(document.getElementById('Additional_Charges').value.replace(/,/g, ''));
+    var Vehical_cost = parseFloat(document.getElementById('Vehical_cost').value.replace(/,/g, ''));
+   
+
+          
+            var Loan_Amount = (Down_payment-Additional_Charges-Vehical_cost )/(Processing_fees/100-1);
+
+            
+
+
+var percentage = (Loan_Amount/Vehical_cost)*100;
+
+var formattedLoan_Amount = Loan_Amount.toLocaleString('en-IN');
+
+
+document.getElementById('result').innerText = 'Loan Amount:   ' + formattedLoan_Amount +' ₹';
+
+
+//document.getElementById('result').innerText = 'Loan Amount: ' + formattedLoan_Amount.toFixed(2);
+document.getElementById('result2').innerText = 'Percentage: ' + percentage.toFixed(2) + '%'; // Displaying percentage properly
+
+
+
+        }
+
+        function resetFields() {
+            document.getElementById('Down_payment').value = '';
+            // document.getElementById('Loan_Amount').value = '';
+            document.getElementById('Processing_fees').value = '';
+            document.getElementById('Additional_Charges').value = '';
+            document.getElementById('Vehical_cost').value = '';
+            // document.getElementById('Rate_Of_Interest').value = '';
+            // document.getElementById('Tenure').value = '';
+            document.getElementById('result').innerText = '';
+            document.getElementById('result1').innerText = '';
+            document.getElementById('result2').innerText = '';
+
+        }
+
+        function resetFields2() {
+            document.getElementById('Down_payment').value = '';
+         
+            document.getElementById('Vehical_cost').value = '';
+        
+            document.getElementById('result').innerText = '';
+            document.getElementById('result1').innerText = '';
+            document.getElementById('result2').innerText = '';
+
+        }
+
+
+
+        function formatIndianNumber(input) {
+    // Remove commas from the input value and parse as float
+    var value = parseFloat(input.value.replace(/,/g, ''));
+
+    // Check if the parsed value is a valid number
+    if (!isNaN(value)) {
+        // Format the number in Indian numbering system
+        var formattedValue = value.toLocaleString('en-IN');
+        // Set the formatted value back to the input field
+        input.value = formattedValue;
+    }
+}
+
+
+    </script>
+</body>
+</html>
