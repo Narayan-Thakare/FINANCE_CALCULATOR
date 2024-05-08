@@ -56,6 +56,12 @@
     <div class="calculator">
         <h2>Bajaj Loan Calculator</h2>
 
+        <!-- <button onclick="window.location.href='index.html'">Back</button> -->
+
+        <button onclick="goBack()">Back</button>
+
+
+<br>
 
         <label for="Down_payment">Down Payment:</label>
         <input type="text" id="Down_payment" placeholder="Enter Down Payment" inputmode="numeric" oninput="formatIndianNumber(this)" >
@@ -161,5 +167,14 @@ document.getElementById('result2').innerText = 'Percentage: ' + percentage.toFix
 
 
     </script>
+
+
+
+<script>
+
+function goBack() {
+  window.history.back();
+}
+</script>
 </body>
 </html>
